@@ -1,6 +1,23 @@
 const TelegramBot = require("node-telegram-bot-api");
 const express = require('express');
-const {Bot} = require('../app/Bot.js')
+
+class Bot {
+    /**
+     * @param {TelegramBot} baseBot 
+     */
+    constructor(baseBot) {
+        this.bot = baseBot;
+        this.initialize();
+        return this.bot;
+    }
+
+    initialize() {
+        this.bot.addListener('message', message => {
+            this.bot.sendMessage(message.chat.id, 'Hello! I\'m a prototype and your chat id is ' + message.chat.id)
+        })
+    }
+
+}
 
 class TelegramExpress {
 
