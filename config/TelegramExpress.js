@@ -12,15 +12,26 @@ class Bot {
                         }
 
     initialize() {
+
         this.bot.addListener('message', message => {
 
             if('from' in message) {
-                this.bot.sendMessage(message.from.id, 'Hello! I\'m a prototype and your chat id is ' + message.chat.id)
-                return;
+                try {
+                    this.bot.sendMessage(message.from.id, 'Hello! I\'m a prototype and your chat id is ' + message.chat.id)
+                    return true;
+                } catch(error) {
+                    console.log(`User ${message.from.id} does not initiate a chat with me`)
+                    this._sendMessage(message, 'Hello! I\'m a prototype and your chat id is ' + message.chat.id)
+                }
+            } else {
+                this._sendMessage(message, "Olá! Eu fui feito para atuar em um grupo! Logo, adicione-me lá que irei atuar como desejado")
             }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
-            this.bot.sendMessage(message.chat.id, 'Hello! I\'m a prototype and your chat id is ' + message.chat.id)
+            
         })                                              
+    }
+    
+    _sendMessage(messageTelegram, message) {
+        this.bot.sendMessage(messageTelegram.chat.id, message)
     }
 
 }
