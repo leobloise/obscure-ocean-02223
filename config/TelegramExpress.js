@@ -7,7 +7,7 @@ class TelegramExpress {
         this._telegramToken = token;
         this._options = {
             webHook: {
-                port: 80
+                port: process.env.PORT
             }
         }
         this._url = url;
