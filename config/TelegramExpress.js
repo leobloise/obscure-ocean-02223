@@ -5,11 +5,6 @@ class TelegramExpress {
 
     constructor(token, url) {
         this._telegramToken = token;
-        this._options = {
-            webHook: {
-                port: process.env.PORT
-            }
-        }
         this._url = url;
         this._webhookRoute = `${this._url}/bot${this._telegramToken}`;
         this.initializeTelegram();
@@ -20,7 +15,7 @@ class TelegramExpress {
 
         try {
         
-            let bot =  new TelegramBot(this._telegramToken, this._options);
+            let bot =  new TelegramBot(this._telegramToken);
         
             bot.setWebHook(this._webhookRoute);
         
