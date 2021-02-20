@@ -1,5 +1,6 @@
 const TelegramBot = require("node-telegram-bot-api");
 const express = require('express');
+const {Bot} = require('../app/Bot.js')
 
 class TelegramExpress {
 
@@ -17,7 +18,7 @@ class TelegramExpress {
         
             let bot =  new TelegramBot(this._telegramToken);
             
-            bot = new customBot(bot);
+            bot = new Bot(bot);
 
             bot.setWebHook(this._webhookRoute);
         
