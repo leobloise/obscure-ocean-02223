@@ -3,20 +3,22 @@ const express = require('express');
 
 class TelegramExpress {
 
-    constructor(token, url) {
+    constructor(token, url, customBot) {
         this._telegramToken = token;
         this._url = url;
         this._webhookRoute = `${this._url}/bot${this._telegramToken}`;
-        this.initializeTelegram();
+        this.initializeTelegram(customBot);
         this.initializeExpress();
     }
 
-    initializeTelegram() {
+    initializeTelegram(customBot) {
 
         try {
         
             let bot =  new TelegramBot(this._telegramToken);
-        
+            
+            bot = new customBot(bot);
+
             bot.setWebHook(this._webhookRoute);
         
             this._bot = bot;
@@ -37,7 +39,6 @@ class TelegramExpress {
         const route = this._webhookRoute.substring(this._webhookRoute.indexOf('/bot'));
         
         this.server.post(route, (req, res) => {
-            console.log(req.body)
             this._bot.processUpdate(req.body);
             res.send(200);
         })
