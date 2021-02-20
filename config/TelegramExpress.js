@@ -32,6 +32,8 @@ class TelegramExpress {
 
         this.server = express();
 
+        this.server.use(express.json())
+
         const route = this._webhookRoute.substring(this._webhookRoute.indexOf('/bot'));
         
         this.server.post(route, (req, res) => {
