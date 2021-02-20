@@ -13,7 +13,12 @@ class Bot {
 
     initialize() {
         this.bot.addListener('message', message => {
-            console.log(message)                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+
+            if('from' in message) {
+                this.bot.sendMessage(message.from.id, 'Hello! I\'m a prototype and your chat id is ' + message.chat.id)
+                return;
+            }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
             this.bot.sendMessage(message.chat.id, 'Hello! I\'m a prototype and your chat id is ' + message.chat.id)
         })                                              
     }
