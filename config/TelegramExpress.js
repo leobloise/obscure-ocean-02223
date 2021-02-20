@@ -35,6 +35,7 @@ class TelegramExpress {
         const route = this._webhookRoute.substring(this._webhookRoute.indexOf('/bot'));
         
         this.server.post(route, (req, res) => {
+            console.log(req.body)
             this._bot.processUpdate(req.body);
             res.send(200);
         })
