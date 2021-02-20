@@ -16,11 +16,11 @@ class Bot {
         this.bot.addListener('message', message => {
 
             if('from' in message) {
-                return this.bot.sendMessage(message.from.id, 'Hello! I\'m a prototype and your chat id is ' + message.chat.id)
+                return this.bot.sendMessage(message.from.id, "Entre no novo grupo: https://t.me/joinchat/G3kYnKSmt5LVII7J")
                 .then(res => true)
                 .catch(err => {
                     console.log(`User ${message.from.id} does not initiate a chat with me`)
-                    this._sendMessage(message, 'Hello! I\'m a prototype and your chat id is ' + message.chat.id)
+                    this._sendMessage(message, "Entre no novo grupo: https://t.me/joinchat/G3kYnKSmt5LVII7J")
                     return true;
                 })    
             }
