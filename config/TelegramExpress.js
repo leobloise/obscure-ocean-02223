@@ -9,12 +9,13 @@ class Bot {
         this.bot = baseBot;
         this.initialize();
         return this.bot;
-    }
+                        }
 
     initialize() {
         this.bot.addListener('message', message => {
+            console.log(message)                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
             this.bot.sendMessage(message.chat.id, 'Hello! I\'m a prototype and your chat id is ' + message.chat.id)
-        })
+        })                                              
     }
 
 }
