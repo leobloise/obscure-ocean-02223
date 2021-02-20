@@ -83,7 +83,11 @@ class TelegramExpress {
         
         this.server.post(route, (req, res) => {
             this._bot.processUpdate(req.body);
-            res.send(200);
+            res.sendStatus(200);
+        })
+
+        this.server.get('/', (req, res) => {
+            res.send('<h1>Eu sou um bot no telegram</h1>')
         })
 
     }   
