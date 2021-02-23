@@ -4,15 +4,15 @@ const {Bot} = require('./Bot.js')
 
 class TelegramExpress {
 
-    constructor(token, url, customBot) {
+    constructor(token, url) {
         this._telegramToken = token;
         this._url = url;
         this._webhookRoute = `${this._url}/bot${this._telegramToken}`;
-        this.initializeTelegram(customBot);
+        this.initializeTelegram();
         this.initializeExpress();
     }
 
-    initializeTelegram(customBot) {
+    initializeTelegram() {
 
         try {
         

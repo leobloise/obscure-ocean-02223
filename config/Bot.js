@@ -5,8 +5,8 @@ class Bot {
     constructor(baseBot) {
         this.bot = baseBot;
         this.initialize();
-        return this.bot;
-                        }
+        return this.bot;//Aproveitando que o javascript é o javascript né
+    }
 
     initialize() {
 
@@ -31,11 +31,11 @@ class Bot {
     }
     
     _sendPrivateBasicMessageFromGroup(message) {
-        return this.bot.sendMessage(message.from.id,  process.env.MSG_PRIVATE || "Entre no novo grupo: https://t.me/joinchat/G3kYnKSmt5LVII7J")
+        return this.bot.sendMessage(message.from.id,  process.env.MSG_PRIVATE)
         .then(res => true)
         .catch(err => {
             console.log(`User ${message.from.id} does not initiate a chat with me`)
-            this._sendMessage(message, process.env.MSG_PUBLIC || "Entre no novo grupo: https://t.me/joinchat/G3kYnKSmt5LVII7J")
+            this._sendMessage(message, process.env.MSG_PUBLIC)
             return true;
         }) 
     }
